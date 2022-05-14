@@ -1,22 +1,24 @@
 import "./App.css";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {Container} from 'react-bootstrap';
 
-function App() {
+// Pages
+import Homepage from "./pages/Homepage";
+import PokemonPage from "./pages/PokemonPage";
+
+import Header from "./components/Header";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://pokeapi.co/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Gotta Catch'Em All!!!!
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header/>
+      <Container>
+        <Routes>
+        <Route exact path= '/' element={<Homepage/>}/>
+        <Route path='/pokemon/:id' element={<PokemonPage/>}/>
+        </Routes>
+      </Container>
+    </Router>
   );
 }
 
